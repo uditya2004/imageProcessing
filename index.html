@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Cluster</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image Cluster</h1>
+        <p class="subtitle">Upload your images and select the features you want to apply</p>
+        
+        <div class="upload-container" id="upload-container">
+            <div class="upload-area" id="upload-area">
+                <img src="assets/upload-icon.svg" alt="Upload" class="upload-icon">
+                <p>Drop your images here</p>
+                <p class="upload-subtext">or click to select files</p>
+                <div class="upload-options">
+                    <button id="camera-button" class="camera-button" title="Take a photo">
+                        <img src="assets/camera-icon.svg" alt="Camera" class="camera-icon">
+                    </button>
+                </div>
+                <input type="file" id="file-input" multiple accept="image/*" hidden>
+            </div>
+            <p id="images-count">0 images selected</p>
+        </div>
+        
+        <div class="features-container" id="features-container" style="display: none;">
+            <div class="features-box">
+                <h2>Select Features</h2>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="assets/face-icon.svg" alt="Face">
+                    </div>
+                    <div class="feature-text">Cluster by Face</div>
+                    <label class="toggle">
+                        <input type="checkbox" id="cluster-face">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="assets/duplicate-icon.svg" alt="Duplicate">
+                    </div>
+                    <div class="feature-text">Remove Duplicates</div>
+                    <label class="toggle">
+                        <input type="checkbox" id="remove-duplicates">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="assets/blur-icon.svg" alt="Blur">
+                    </div>
+                    <div class="feature-text">Remove Blur Images</div>
+                    <label class="toggle">
+                        <input type="checkbox" id="remove-blur">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="assets/angle-icon.svg" alt="Angle">
+                    </div>
+                    <div class="feature-text">Remove Bad Angles</div>
+                    <label class="toggle">
+                        <input type="checkbox" id="remove-bad-angles">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="assets/date-icon.svg" alt="Date">
+                    </div>
+                    <div class="feature-text">Sort by Date</div>
+                    <label class="toggle">
+                        <input type="checkbox" id="sort-date">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="assets/background-icon.svg" alt="Background">
+                    </div>
+                    <div class="feature-text">Remove Background</div>
+                    <label class="toggle">
+                        <input type="checkbox" id="remove-background">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <button id="process-button" class="process-button" style="display: none;">
+            <img src="assets/process-icon.svg" alt="Process" class="process-icon">
+            Process Images
+        </button>
+        
+        <div id="results-container" class="results-container" style="display: none;">
+            <h2>Results</h2>
+            
+            <div id="stats-container" class="stats-container">
+                <h3>Processing Statistics</h3>
+                <div id="stats-grid" class="stats-grid"></div>
+            </div>
+            
+            <div id="results-grid" class="results-grid"></div>
+            
+            <button id="download-button" class="download-button">
+                <img src="assets/download-icon.svg" alt="Download" class="download-icon">
+                Download ZIP
+            </button>
+        </div>
+        
+        <!-- Image Preview Modal -->
+        <div id="image-modal" class="modal">
+            <span class="close">&times;</span>
+            <div class="modal-content">
+                <span class="prev">&#10094;</span>
+                <img id="modal-image" class="modal-image">
+                <span class="next">&#10095;</span>
+            </div>
+        </div>
+        
+        <!-- Camera Modal -->
+        <div id="camera-modal" class="modal">
+            <span class="close">&times;</span>
+            <div class="modal-content camera-modal-content">
+                <h3>Take a Photo</h3>
+                <video id="camera-preview" autoplay playsinline></video>
+                <div class="camera-controls">
+                    <button id="capture-button" class="capture-button">Take Photo</button>
+                    <button id="retake-button" class="retake-button" style="display: none;">Retake</button>
+                    <button id="add-photo-button" class="add-photo-button" style="display: none;">Add Photo</button>
+                </div>
+                <canvas id="photo-canvas" style="display: none;"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
