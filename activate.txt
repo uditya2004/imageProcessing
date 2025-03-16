@@ -1,5 +1,11 @@
-create virtual environment:- python -m venv venv
+Do this to install required files (ONE TIME ONLY)
 
-windows:- venv\Scripts\activate
+Step 1:- python -m venv venv
+Step 2:- venv\Scripts\activate
+Step 3:- pip install -r requirements.txt
 
-python main.py
+==============================
+Do this to start the weebsite:-
+
+Step 1:- venv\Scripts\activate
+Step 2:- python main.py
